@@ -19,7 +19,8 @@ public class Prompt {
 			if (month > 12) {
 				continue;
 			}
-			System.out.printf("%d은 %d까지 있습니다. \n", month, cal.returnmax(month));
+			
+			cal.printSample(2017,month);
 		}
 		System.out.println("Bye~");
 
