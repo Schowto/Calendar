@@ -1,26 +1,56 @@
 package Yangmo.calendar;
 
 public class Calendar {
-	public int returnmax(int month) {
-		int[] days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-		return days[month - 1];
+
+	private static final int[] days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	private static final int[] leapdays = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+	public int weekCheck(String weekday) {
+		String[] weekdays = { "SU", "MO", "TU", "WE", "TH", "FR", "SA" };
+		int a = 0;
+		for (int i = 0; i <= 6; i++) {
+			if (weekday.equals(weekdays[i])) {
+				a = i;
+			}
+		}
+		return a;
 	}
 
-	public void printSample(int year, int month) {
-		Calendar c = new Calendar();
-
-		System.out.printf("  <<%4d년 %3d월>>   \n", year, month);
-		System.out.println("일   월   화   수   목   금   토");
-		System.out.println("--------------------");
-		System.out.println(" 1  2  3  4  5  6  7");
-		System.out.println(" 8  9 10 11 12 13 14");
-		System.out.println("15 16 17 18 19 20 21");
-		System.out.println("22 23 24 25 26 27 28");
-		if(month !=2) {
-		for (int i = 29; i <= c.returnmax(month); i++) {
-			System.out.printf("%d ", i);
+	public int returnmax(int year, int month) {
+		if (isLeapyear(year)) {
+			return leapdays[month - 1];
+		} else {
+			return days[month - 1];
 		}
-		System.out.println();
+	}
+
+	public boolean isLeapyear(int year) {
+		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void printSample(int year, int month, String weekday) {
+		System.out.printf("  <<%4d년 %3d월>>   \n", year, month);
+		System.out.println("SU MO TU WE TH FR SA");
+		System.out.println("--------------------");
+		int maxday = returnmax(year, month);
+
+		for (int o = 1; o <= weekCheck(weekday); o++) {
+			System.out.print("   ");
+			if (o == 7) {
+				System.out.println();
+			}
+		}
+		for (int i = 1; i <= maxday; i++) {
+			System.out.printf("%2d ", i);
+			if (i % 7 == (7 - weekCheck(weekday))) {
+				System.out.println();
+			} else if (i == maxday) {
+				System.out.println();
+			}
 		}
 	}
 }

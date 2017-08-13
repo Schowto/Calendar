@@ -1,4 +1,4 @@
-//package Yangmo.calendar;
+//package yangmo.calendar;
 //
 //import java.util.Scanner;
 //

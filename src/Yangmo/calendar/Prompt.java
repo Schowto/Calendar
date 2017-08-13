@@ -10,26 +10,35 @@ public class Prompt {
 		Scanner scanner = new Scanner(System.in);
 		Calendar cal = new Calendar();
 		while (true) {
+			System.out.println("년도을 입력하세요");
+			System.out.print("YEAR> ");
+			int year = scanner.nextInt();
 			System.out.println("월을 입력하세요");
-			System.out.print(PROMPT);
+			System.out.print("MONTH> ");
 			int month = scanner.nextInt();
+			System.out.println("첫번째 요일을 입력하세요.(SU, MO, WE, TH, FR, SA");
+			System.out.print("WEEKDAY> ");
+			String weekday = scanner.next();
 			if (month == -1) {
 				break;
 			}
 			if (month > 12) {
 				continue;
 			}
-			
-			cal.printSample(2017,month);
+
+			cal.printSample(year, month, weekday);
 		}
 		System.out.println("Bye~");
-
 		scanner.close();
 	}
 
 	public static void main(String[] args) {
-		Prompt p = new Prompt();
-		p.runPrompt();
+		 Prompt p = new Prompt();
+		 p.runPrompt();
+		
+		//실험용
+//		Calendar c = new Calendar();
+//		System.out.print(c.weekCheck("MO"));
 	}
 
 }
