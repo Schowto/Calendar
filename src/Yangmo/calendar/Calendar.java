@@ -4,7 +4,6 @@ public class Calendar {
 
 	private static final int[] days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	private static final int[] leapdays = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	private static final String[] weekdays = { "SU", "MO", "TU", "WE", "TH", "FR", "SA" };
 
 	public int autoWeek(int year, int month) {
 		Calendar c = new Calendar();
@@ -21,15 +20,17 @@ public class Calendar {
 		return yearday % 7;
 	}
 
-	public int weekCheck(String weekday) {
-		int a = 0;
-		for (int i = 0; i <= 6; i++) {
-			if (weekday.equals(weekdays[i])) {
-				a = i;
-			}
-		}
-		return a;
-	}
+// 그달의 첫번째 요일을 입력 받아서 구현
+//	public int weekCheck(String weekday) {
+//	String[] weekdays = { "SU", "MO", "TU", "WE", "TH", "FR", "SA" };
+//		int a = 0;
+//		for (int i = 0; i <= 6; i++) {
+//			if (weekday.equals(weekdays[i])) {
+//				a = i;
+//			}
+//		}
+//		return a;
+//	}
 
 	public int returnmax(int year, int month) {
 		if (isLeapyear(year)) {
